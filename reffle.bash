@@ -30,6 +30,7 @@ update_system() {
 }
 
 while true; do
+    clear
     echo "========================================="
     echo "         Управление системой Ubuntu        "
     echo "========================================="
@@ -39,7 +40,16 @@ while true; do
     echo "4. Обновить систему"
     echo "0. Выход"
     echo
+
     read -p "Ваш выбор (0-4): " choice
+
+    # Удаляем пробелы и проверяем, что введена цифра
+    choice=$(echo "$choice" | tr -d '[:space:]')
+    if ! [[ "$choice" =~ ^[0-4]$ ]]; then
+        echo "Ошибка: введите число от 0 до 4."
+        read -p "Нажмите Enter..."
+        continue
+    fi
 
     case $choice in
         1) show_info ;;
@@ -47,10 +57,7 @@ while true; do
         3) show_disk ;;
         4) update_system ;;
         0) echo "Выход."; exit 0 ;;
-        *) echo "Неверный выбор. Попробуйте снова." ;;
     esac
 
-    echo
     read -p "Нажмите Enter, чтобы продолжить..."
-    echo
 done
