@@ -146,7 +146,7 @@ while true; do
     read -p "Ваш выбор (0-12): " choice
 
     # Очистка ввода от пробелов и проверка
-    if ! [[ "$choice" =~ ^[0-12]$ ]]; then
+    if ! [[ "$choice" =~ ^([0-9]|1[0-2])$ ]]; then
         echo -e "${RED}Ошибка: введите число от 0 до 12.${NC}"
         sleep 1
         continue
