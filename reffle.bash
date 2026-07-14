@@ -132,7 +132,7 @@ while true; do
     choice=$(echo "$choice" | tr -d '[:space:]')
     if ! [[ "$choice" =~ ^[0-8]$ ]]; then
         echo -e "${RED}Ошибка: введите число от 0 до 8.${NC}"
-        sleep 1
+        sleep 1000
         continue
     fi
 
