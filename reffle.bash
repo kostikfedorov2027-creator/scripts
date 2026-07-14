@@ -46,10 +46,14 @@ show_menu() {
     echo -e "  ${GREEN}5.${RED} Обновить систему до версии UBUNTU 24.04 LTS${NC}"
     echo -e "  ${YELLOW}Тесты${NC}"
     echo -e "  ${GREEN}6.${NC} Цензорчек"
+    echo -e "  ${GREEN}7.${NC} Проверка IP сервера на блокировки зарубежными сервисами CheckPlace"
+    echo -e "  ${GREEN}8.${NC} Проверка IP сервера на блокировки зарубежными сервисами Multination"
+    echo -e "  ${GREEN}9.${NC} Параметры сервера и проверка скорости к российским и зарубежным провайдерам iperf3 by DigneZzZ"
+    echo -e "  ${GREEN}10.${NC} Параметры сервера и проверка скорости к зарубежным провайдерам"
     echo -e "  ${YELLOW}Автоматизация${NC}"
-    echo -e "  ${GREEN}7.${NC} Добовление задания для автоперезагрузки"
+    echo -e "  ${GREEN}11.${NC} Добовление задания для автоперезагрузки"
     echo -e "  ${YELLOW}RemnaWare & RemnaNode${NC}"
-    echo -e "  ${GREEN}8.${NC} Перезагрузка ноды Remnaware"
+    echo -e "  ${GREEN}12.${NC} Перезагрузка ноды Remnaware"
     echo
     echo -e "  ${RED}0.${NC} Выход"
     echo
@@ -104,6 +108,19 @@ censorship() {
     wget -qO- censorcheck.tlab.pw | bash
 }
 
+CheckPlace() {
+    bash <(curl -Ls IP.Check.Place) -l en
+}
+Multination() {
+    bash <(curl -L -s check.unlock.media) -E en -R 0
+}
+DigneZzZ() {
+    wget -qO- bench.gig.ovh | bash
+}
+check() {
+    wget -qO- bench.sh | bash
+}
+
 crone() {
     wget -qO- https://raw.githubusercontent.com/kostikfedorov2027-creator/scripts/refs/heads/main/reboot.bash | bash
 }
@@ -126,11 +143,11 @@ pause() {
 # --------------------------------------------------
 while true; do
     show_menu
-    read -p "Ваш выбор (0-8): " choice
+    read -p "Ваш выбор (0-12): " choice
 
     # Очистка ввода от пробелов и проверка
-    if ! [[ "$choice" =~ ^[0-8]$ ]]; then
-        echo -e "${RED}Ошибка: введите число от 0 до 8.${NC}"
+    if ! [[ "$choice" =~ ^[0-12]$ ]]; then
+        echo -e "${RED}Ошибка: введите число от 0 до 12.${NC}"
         sleep 1
         continue
     fi
@@ -143,8 +160,12 @@ while true; do
         4) update_packages ;;
         5) upgrade_os ;;
         6) censorship ;;
-        7) crone ;;
-        8) restart_remnanode ;;
+        7) CheckPlace ;;
+        8) Multination ;;
+        9) DigneZzZ ;;
+        10) check ;;
+        11) crone ;;
+        12) restart_remnanode ;;
         0) echo -e "${GREEN}Покеда!${NC}"; exit 0 ;;
     esac
 
