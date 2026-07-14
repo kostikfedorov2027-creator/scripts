@@ -1,23 +1,14 @@
 #!/bin/bash
-# Bash Menu Script Example
-
-PS3='Please enter your choice: '
-options=("Option 1" "Option 2" "Option 3" "Quit")
-select opt in "${options[@]}"
-do
-    case $opt in
-        "Option 1")
-            echo "you chose choice 1"
-            ;;
-        "Option 2")
-            echo "you chose choice 2"
-            ;;
-        "Option 3")
-            echo "you chose choice $REPLY which is $opt"
-            ;;
-        "Quit")
-            break
-            ;;
-        *) echo "invalid option $REPLY";;
-    esac
-done
+echo "select the operation ************"
+echo "  1)operation 1"
+echo "  2)operation 2"
+echo "  3)operation 3"
+echo "  4)operation 4" <br/>
+read n
+case $n in
+  1) echo "You chose Option 1";;
+  2) echo "You chose Option 2";;
+  3) echo "You chose Option 3";;
+  4) echo "You chose Option 4";;
+  *) echo "invalid option";;
+esac
