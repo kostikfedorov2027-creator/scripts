@@ -61,7 +61,7 @@ apt autoclean -y[reference:1]
 if [[ -f /var/run/reboot-required ]]; then
     echo -e "${YELLOW}⚠️  Требуется перезагрузка для применения обновлений ядра.${NC}"
     read -p "Перезагрузить сейчас? (y/N): " -n 1 -r
-    echo
+    echo ""
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         echo "Перезагрузка..."
         reboot
