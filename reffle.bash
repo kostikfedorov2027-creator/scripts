@@ -129,10 +129,9 @@ while true; do
     read -p "Ваш выбор (0-8): " choice
 
     # Очистка ввода от пробелов и проверка
-    choice=$(echo "$choice" | tr -d '[:space:]')
     if ! [[ "$choice" =~ ^[0-8]$ ]]; then
         echo -e "${RED}Ошибка: введите число от 0 до 8.${NC}"
-        sleep 1000
+        sleep 1
         continue
     fi
 
